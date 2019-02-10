@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+                name="item"
+                type="com.app.juawcevada.vostextu.model.PostEntity"/>
+        <variable
+                name="actions"
+                type="com.app.juawcevada.vostextu.ui.posts.PostItemActions"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:background="?android:attr/selectableItemBackground"
+            android:onClick="@{() ->  actions.openDetail(item) }"
+            android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineStart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="16dp"/>
+
+        <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineEnd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="16dp"/>
+
+
+        <TextView
+                android:id="@+id/title"
+                style="@style/TextAppearance.AppCompat.Subhead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guidelineStart"
+                app:layout_constraintEnd_toEndOf="@+id/guidelineEnd"
+                tools:text="Title"
+                android:text="@{item.title}"/>
+
+        <TextView
+                android:id="@+id/body"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:maxLines="3"
+                android:layout_marginTop="4dp"
+                android:ellipsize="end"
+                app:layout_constraintTop_toBottomOf="@+id/title"
+                app:layout_constraintStart_toStartOf="@+id/guidelineStart"
+                app:layout_constraintEnd_toEndOf="@+id/guidelineEnd"
+                tools:text="Body"
+                android:text="@{item.body}"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

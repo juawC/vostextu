@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/nav_graph" app:startDestination="@id/postsFragment">
+
+    <fragment android:id="@+id/postsFragment" android:name="com.app.juawcevada.vostextu.ui.posts.PostsFragment"
+              android:label="PostsFragment">
+        <action android:id="@+id/action_postsFragment_to_postDetailFragment" app:destination="@id/postDetailFragment"/>
+    </fragment>
+    <fragment android:id="@+id/postDetailFragment"
+              android:name="com.app.juawcevada.vostextu.ui.postdetail.PostDetailFragment"
+              android:label="PostDetailFragment">
+        <argument
+                android:name="item"
+                app:argType="com.app.juawcevada.vostextu.model.PostEntity" />
+            </fragment>
+</navigation>

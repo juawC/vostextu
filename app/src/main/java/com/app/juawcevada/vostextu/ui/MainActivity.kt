@@ -1,19 +1,30 @@
 package com.app.juawcevada.vostextu.ui
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity;
-import android.view.Menu
-import android.view.MenuItem
+import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.app.juawcevada.vostextu.R
+import dagger.android.AndroidInjection
+import dagger.android.AndroidInjector
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.support.HasSupportFragmentInjector
+import javax.inject.Inject
 
-import kotlinx.android.synthetic.main.activity_main.*
+class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
 
-class MainActivity : AppCompatActivity() {
+    @Inject
+    lateinit var supportFragmentInjector: DispatchingAndroidInjector<Fragment>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        AndroidInjection.inject(this)
         setContentView(R.layout.activity_main)
-        setSupportActionBar(toolbar)
+    }
+
+    override fun onSupportNavigateUp() = findNavController(R.id.nav_host_fragment).navigateUp()
+
+    override fun supportFragmentInjector(): AndroidInjector<Fragment> {
+        return supportFragmentInjector
     }
 }

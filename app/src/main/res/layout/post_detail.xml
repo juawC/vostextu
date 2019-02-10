@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+                name="viewModel"
+                type="com.app.juawcevada.vostextu.ui.postdetail.PostDetailViewModel"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+        <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineTop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_begin="16dp"/>
+
+        <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineStart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="16dp"/>
+
+        <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guidelineEnd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="16dp"/>
+
+
+        <TextView
+                android:id="@+id/title"
+                style="@style/TextAppearance.AppCompat.Subhead"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="@+id/guidelineTop"
+                app:layout_constraintStart_toStartOf="@+id/guidelineStart"
+                app:layout_constraintEnd_toEndOf="@+id/guidelineEnd"
+                tools:text="Title"
+                android:text="@{viewModel.viewState.title}"/>
+
+        <TextView
+                android:id="@+id/userName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/title"
+                app:layout_constraintEnd_toEndOf="@+id/guidelineEnd"
+                tools:text="User Juaw"
+                android:text="@{@string/user_name(viewModel.viewState.userName)}"/>
+
+        <TextView
+                android:id="@+id/comments"
+                android:layout_marginTop="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/userName"
+                app:layout_constraintEnd_toEndOf="@+id/guidelineEnd"
+                tools:text="9000 comments"
+                android:text="@{@string/number_of_comments(viewModel.viewState.numberOfComments)}"/>
+
+        <View android:id="@+id/commentsPlaceHolder"
+              android:layout_width="0dp"
+              android:layout_height="0dp"
+              android:background="@android:color/darker_gray"
+              app:setVisible="@{viewModel.viewState.numberOfComments == null}"
+              app:layout_constraintStart_toStartOf="@+id/comments"
+              app:layout_constraintEnd_toEndOf="@+id/comments"
+              app:layout_constraintTop_toTopOf="@+id/comments"
+              app:layout_constraintBottom_toBottomOf="@+id/comments"/>
+
+        <View android:id="@+id/userPlaceHolder"
+              android:layout_width="0dp"
+              android:layout_height="0dp"
+              app:setVisible="@{viewModel.viewState.userName == null}"
+              android:background="@android:color/darker_gray"
+              app:layout_constraintStart_toStartOf="@+id/userName"
+              app:layout_constraintEnd_toEndOf="@+id/userName"
+              app:layout_constraintTop_toTopOf="@+id/userName"
+              app:layout_constraintBottom_toBottomOf="@+id/userName"/>
+
+        <TextView
+                android:id="@+id/body"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/comments"
+                app:layout_constraintStart_toStartOf="@+id/guidelineStart"
+                app:layout_constraintEnd_toEndOf="@+id/guidelineEnd"
+                tools:text="Body"
+                android:text="@{viewModel.viewState.body}"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
