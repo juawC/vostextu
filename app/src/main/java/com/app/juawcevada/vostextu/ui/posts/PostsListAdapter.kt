@@ -10,7 +10,7 @@ import com.app.juawcevada.vostextu.model.PostEntity
 import com.app.juawcevada.vostextu.ui.shared.ListRecyclerAdapter
 
 class PostsListAdapter(
-    private val openDetail: (PostEntity) -> Unit
+    private val openDetailFun: (PostEntity) -> Unit
 ) : ListRecyclerAdapter<PostEntity, PostItemBinding>(PostDiff()), PostItemActions {
 
     override fun bind(binding: PostItemBinding, item: PostEntity, position: Int, payloads: MutableList<Any>) {
@@ -40,6 +40,6 @@ class PostsListAdapter(
     }
 
     override fun openDetail(item: PostEntity) {
-        openDetail(item)
+        openDetailFun(item)
     }
 }

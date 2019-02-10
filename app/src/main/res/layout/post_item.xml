@@ -15,6 +15,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
             android:background="?android:attr/selectableItemBackground"
             android:onClick="@{() ->  actions.openDetail(item) }"
             android:layout_height="wrap_content">
@@ -50,7 +52,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:maxLines="3"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="8dp"
                 android:ellipsize="end"
                 app:layout_constraintTop_toBottomOf="@+id/title"
                 app:layout_constraintStart_toStartOf="@+id/guidelineStart"

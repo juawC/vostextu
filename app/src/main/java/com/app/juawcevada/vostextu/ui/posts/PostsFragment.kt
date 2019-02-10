@@ -9,12 +9,15 @@ import androidx.annotation.VisibleForTesting
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.app.juawcevada.vostextu.databinding.PostsListFragmentBinding
 import com.app.juawcevada.vostextu.shared.EventObserver
 import com.app.juawcevada.vostextu.shared.extensions.viewModelProvider
+import com.app.juawcevada.vostextu.testing.OpenClassOnDebug
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
+@OpenClassOnDebug
 class PostsFragment: Fragment() {
 
     @Inject
@@ -41,6 +44,7 @@ class PostsFragment: Fragment() {
             it.viewActions = viewModel
             it.list.apply {
                 adapter = PostsListAdapter(viewModel::openDetail)
+                addItemDecoration(DividerItemDecoration(it.root.context, DividerItemDecoration.HORIZONTAL))
             }
 
 
