@@ -30,7 +30,7 @@ class PostsFragmentTest {
     @get:Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()
 
-    private lateinit var viewModel:PostsViewModel
+    private lateinit var viewModel: PostsViewModel
     private lateinit var navigationAction: MutableLiveData<Event<PostsNavigationActions>>
     private lateinit var viewState: MutableLiveData<PostsViewState>
     private lateinit var fragment: PostsFragmentMockNavigation
@@ -44,8 +44,8 @@ class PostsFragmentTest {
         fragment = PostsFragmentMockNavigation()
 
         viewModel = mock {
-            on {viewState} doReturn this@PostsFragmentTest.viewState
-            on {navigationAction} doReturn this@PostsFragmentTest.navigationAction
+            on { viewState } doReturn this@PostsFragmentTest.viewState
+            on { navigationAction } doReturn this@PostsFragmentTest.navigationAction
         }
 
         fragment.viewModelFactory = viewModel.createTestFactory()
@@ -73,16 +73,24 @@ class PostsFragmentTest {
         launchFragment()
 
         onView(RecyclerViewMatcher(R.id.list).atPosition(0))
-            .check(matches(allOf(
-                hasDescendant(withText("Line")),
-                hasDescendant(withText("Triple line"))
-            )))
+            .check(
+                matches(
+                    allOf(
+                        hasDescendant(withText("Line")),
+                        hasDescendant(withText("Triple line"))
+                    )
+                )
+            )
 
         onView(RecyclerViewMatcher(R.id.list).atPosition(1))
-            .check(matches(allOf(
-                hasDescendant(withText("Acie")),
-                hasDescendant(withText("Acie triplici"))
-            )))
+            .check(
+                matches(
+                    allOf(
+                        hasDescendant(withText("Acie")),
+                        hasDescendant(withText("Acie triplici"))
+                    )
+                )
+            )
     }
 
     @Test
@@ -96,10 +104,14 @@ class PostsFragmentTest {
         launchFragment()
 
         onView(withId(R.id.error_text_title))
-            .check(matches(allOf(
-                isDisplayed(),
-                withText("Error message!")
-            )))
+            .check(
+                matches(
+                    allOf(
+                        isDisplayed(),
+                        withText("Error message!")
+                    )
+                )
+            )
     }
 
     @Test
@@ -143,7 +155,7 @@ class PostsFragmentTest {
         }
     }
 
-    class PostsFragmentMockNavigation: PostsFragment() {
+    class PostsFragmentMockNavigation : PostsFragment() {
         val navController = mock<NavController>()
         override fun navController() = navController
     }
