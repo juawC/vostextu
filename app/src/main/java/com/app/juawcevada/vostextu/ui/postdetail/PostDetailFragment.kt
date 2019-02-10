@@ -11,13 +11,14 @@ import com.app.juawcevada.vostextu.databinding.PostDetailBinding
 import com.app.juawcevada.vostextu.databinding.PostsListFragmentBinding
 import com.app.juawcevada.vostextu.shared.extensions.setUpSnackbar
 import com.app.juawcevada.vostextu.shared.extensions.viewModelProvider
+import com.app.juawcevada.vostextu.ui.shared.ViewModelFactory
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
 class PostDetailFragment: Fragment() {
 
     @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
+    lateinit var viewModelFactory: ViewModelFactory<PostDetailViewModel>
 
     private lateinit var viewModel: PostDetailViewModel
 

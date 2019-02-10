@@ -7,13 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.VisibleForTesting
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.app.juawcevada.vostextu.databinding.PostsListFragmentBinding
 import com.app.juawcevada.vostextu.shared.EventObserver
 import com.app.juawcevada.vostextu.shared.extensions.viewModelProvider
 import com.app.juawcevada.vostextu.testing.OpenClassOnDebug
+import com.app.juawcevada.vostextu.ui.shared.ViewModelFactory
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
@@ -21,7 +21,7 @@ import javax.inject.Inject
 class PostsFragment: Fragment() {
 
     @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
+    lateinit var viewModelFactory: ViewModelFactory<PostsViewModel>
 
     private lateinit var viewModel: PostsViewModel
 

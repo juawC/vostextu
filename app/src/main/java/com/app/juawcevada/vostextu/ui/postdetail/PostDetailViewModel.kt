@@ -3,6 +3,7 @@ package com.app.juawcevada.vostextu.ui.postdetail
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.app.juawcevada.vostextu.R
+import com.app.juawcevada.vostextu.di.annotation.PostDetail
 import com.app.juawcevada.vostextu.domain.GetCommentsUseCase
 import com.app.juawcevada.vostextu.domain.GetUserUseCase
 import com.app.juawcevada.vostextu.model.CommentEntity
@@ -19,7 +20,7 @@ import javax.inject.Inject
 
 @OpenClassOnDebug
 class PostDetailViewModel @Inject constructor(
-    private val post: PostEntity,
+    @PostDetail private val post: PostEntity,
     private val appDispatchers: AppDispatchers,
     private val commentsUseCase: GetCommentsUseCase,
     private val userUseCase: GetUserUseCase
