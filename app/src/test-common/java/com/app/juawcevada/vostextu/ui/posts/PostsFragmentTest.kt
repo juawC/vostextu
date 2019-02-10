@@ -107,7 +107,6 @@ class PostsFragmentTest {
             .check(
                 matches(
                     allOf(
-                        isDisplayed(),
                         withText("Error message!")
                     )
                 )
