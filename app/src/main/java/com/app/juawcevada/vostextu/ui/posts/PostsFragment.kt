@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.VisibleForTesting
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.app.juawcevada.vostextu.databinding.PostsListFragmentBinding
@@ -15,6 +16,9 @@ import com.app.juawcevada.vostextu.testing.OpenClassOnDebug
 import com.app.juawcevada.vostextu.ui.shared.ViewModelFactory
 import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
+import androidx.recyclerview.widget.DividerItemDecoration
+import com.app.juawcevada.vostextu.R
+
 
 @OpenClassOnDebug
 class PostsFragment: Fragment() {
@@ -43,8 +47,15 @@ class PostsFragment: Fragment() {
             it.viewActions = viewModel
             it.list.apply {
                 adapter = PostsListAdapter(viewModel::openDetail)
+                addItemDecoration(
+                    DividerItemDecoration(
+                        context,
+                        DividerItemDecoration.VERTICAL
+                    ).apply {
+                        setDrawable(ContextCompat.getDrawable(context, R.drawable.ic_post_item_divider)!!)
+                    }
+                )
             }
-
 
             viewModel.navigationAction.observe(viewLifecycleOwner, EventObserver { event ->
 

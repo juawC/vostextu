@@ -16,6 +16,6 @@ class GetCommentsUseCase @Inject constructor(
 ) : UseCase<Long, List<CommentEntity>>() {
 
     override suspend fun execute(parameters: Long): Try<List<CommentEntity>> = withContext(appDispatchers.Default){
-        commentsRepository.getComments().map { it.filter { comments -> comments.id == parameters } }
+        commentsRepository.getComments().map { it.filter { comments -> comments.postId == parameters } }
     }
 }
