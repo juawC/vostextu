@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">VosTextu</string>
+    <string name="user_name">User %s</string>
+    <string name="number_of_comments">%d comments</string>
+    <string name="oops">Oops something went wrong!</string>
+    <string name="oops_comments">Oops error fetching comments!</string>
+    <string name="oops_user">Oops error fetching user!</string>
+    <string name="try_again">Try again</string>
+</resources>
