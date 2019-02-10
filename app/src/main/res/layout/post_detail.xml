@@ -10,6 +10,12 @@
                 type="com.app.juawcevada.vostextu.ui.postdetail.PostDetailViewModel"/>
     </data>
 
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:refreshing="@{viewModel.viewState.isCommentsLoading &amp;&amp; viewModel.viewState.isUserLoading}">
+
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -71,7 +77,7 @@
         <View android:id="@+id/commentsPlaceHolder"
               android:layout_width="0dp"
               android:layout_height="0dp"
-              android:background="@android:color/darker_gray"
+              android:background="@color/light_gray"
               app:setVisible="@{viewModel.viewState.numberOfComments == null}"
               app:layout_constraintStart_toStartOf="@+id/comments"
               app:layout_constraintEnd_toEndOf="@+id/comments"
@@ -82,7 +88,7 @@
               android:layout_width="0dp"
               android:layout_height="0dp"
               app:setVisible="@{viewModel.viewState.userName == null}"
-              android:background="@android:color/darker_gray"
+              android:background="@color/light_gray"
               app:layout_constraintStart_toStartOf="@+id/userName"
               app:layout_constraintEnd_toEndOf="@+id/userName"
               app:layout_constraintTop_toTopOf="@+id/userName"
@@ -99,7 +105,7 @@
                 tools:text="Body"
                 android:text="@{viewModel.viewState.body}"/>
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </layout>

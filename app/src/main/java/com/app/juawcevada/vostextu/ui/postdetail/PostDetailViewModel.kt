@@ -29,6 +29,8 @@ class PostDetailViewModel @Inject constructor(
 
     private val _viewState = ViewStateLiveData(
         PostDetailViewState(
+            isCommentsLoading = true,
+            isUserLoading = true,
             title = post.title,
             body = post.body
         )
@@ -60,22 +62,38 @@ class PostDetailViewModel @Inject constructor(
 
     private fun loadCommentSuccess(comments: List<CommentEntity>) {
         _viewState.updateState {
-            copy(numberOfComments = comments.size )
+            copy(
+                numberOfComments = comments.size,
+                isCommentsLoading = false
+            )
         }
     }
 
     private fun loadCommentError() {
         _errorMessage.value = Event(SnackbarMessage(R.string.oops_comments))
+        _viewState.updateState {
+            copy(
+                isCommentsLoading = false
+            )
+        }
     }
 
     private fun loadUserSuccess(user: UserEntity) {
         _viewState.updateState {
-            copy(userName = user.name )
+            copy(
+                userName = user.name,
+                isUserLoading = false
+            )
         }
     }
 
     private fun loadUserError() {
         _errorMessage.value = Event(SnackbarMessage(R.string.oops_user))
+        _viewState.updateState {
+            copy(
+                isUserLoading = false
+            )
+        }
     }
 
 }

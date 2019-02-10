@@ -38,6 +38,7 @@ class PostDetailFragment: Fragment() {
         return PostDetailBinding.inflate(inflater, container, false).also {
             it.setLifecycleOwner(this)
             it.viewModel = viewModel
+            it.refresh.isEnabled = false
 
             setUpSnackbar(viewModel.errorMessage, it.root)
         }.root

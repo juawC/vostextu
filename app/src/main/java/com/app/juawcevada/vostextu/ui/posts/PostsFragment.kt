@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.annotation.VisibleForTesting
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.DividerItemDecoration
 import com.app.juawcevada.vostextu.databinding.PostsListFragmentBinding
 import com.app.juawcevada.vostextu.shared.EventObserver
 import com.app.juawcevada.vostextu.shared.extensions.viewModelProvider
@@ -44,7 +43,6 @@ class PostsFragment: Fragment() {
             it.viewActions = viewModel
             it.list.apply {
                 adapter = PostsListAdapter(viewModel::openDetail)
-                addItemDecoration(DividerItemDecoration(it.root.context, DividerItemDecoration.HORIZONTAL))
             }
 
 
